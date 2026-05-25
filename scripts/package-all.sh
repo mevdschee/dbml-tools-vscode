@@ -43,6 +43,7 @@ if [ ${#missing[@]} -gt 0 ]; then
 fi
 
 mkdir -p vsix
+rm -f vsix/*.vsix
 npx --no-install vsce package --out vsix/ >/dev/null
 
 echo
