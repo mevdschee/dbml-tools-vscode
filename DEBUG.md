@@ -25,26 +25,29 @@ set to `verbose`.
 
 ## 1. Build the Go server binary
 
-From the repository root:
+Clone [`dbml-tools`](https://github.com/mevdschee/dbml-tools) next to this
+repo, then from its root:
 
 ```sh
-go build -o ./editors/vscode/server-bin/dev/dbml-tools .
+go build .
 ```
 
-The dev binary lives under `server-bin/dev/` so it doesn't conflict with the
-per-platform bundles shipped in published `.vsix` files.
+This produces `./dbml-tools` in the Go repo. Keeping the dev binary out of
+this extension's tree avoids clobbering the per-platform bundles shipped in
+published `.vsix` files.
 
 Sanity-check it works:
 
 ```sh
-./editors/vscode/server-bin/dev/dbml-tools --version 2>&1 || true
-./editors/vscode/server-bin/dev/dbml-tools check testdata/blog.dbml
+./dbml-tools --version 2>&1 || true
+./dbml-tools check testdata/blog.dbml
 ```
 
 ## 2. Install extension dependencies
 
+From this repo's root:
+
 ```sh
-cd editors/vscode
 npm install
 ```
 
@@ -75,7 +78,7 @@ You have two options:
 **Option A — `dbml.path` setting (recommended for development).** Open
 VSCode's settings (the *user* or *workspace* scope is fine), search for
 `dbml.path`, and set it to the absolute path of the binary you built in
-step 1, e.g. `/home/you/projects/dbml-tools/editors/vscode/server-bin/dev/dbml-tools`.
+step 1, e.g. `/home/you/projects/dbml-tools/dbml-tools`.
 
 **Option B — symlink on `$PATH`.** Put a `dbml-tools` symlink in `~/.local/bin/`
 pointing at the dev binary. Leave `dbml.path` empty; the extension will find
@@ -85,9 +88,8 @@ The resolution order is: `dbml.path` → `$PATH` lookup → bundled binary.
 
 ## 5. Launch the Extension Development Host
 
-Open `editors/vscode/` in VSCode (not the repo root — VSCode's debugger
-expects the extension folder to be the workspace), then press **F5** or pick
-*Run and Debug → Run Extension*.
+Open this repo in VSCode, then press **F5** or pick *Run and Debug → Run
+Extension*.
 
 A second VSCode window appears titled *[Extension Development Host]*. Open
 any `.dbml` file in it. You should see:
@@ -166,7 +168,7 @@ If `initialize` never gets a response, the binary probably crashed on
 startup. Confirm by running it directly:
 
 ```sh
-echo '' | ./editors/vscode/server-bin/dev/dbml-tools lsp
+echo '' | ./dbml-tools lsp
 ```
 
 It should just hang (waiting for input) rather than print an error.
@@ -219,8 +221,8 @@ the handler you're investigating, recompile, and rebuild the extension
 host:
 
 ```sh
-# in repo root
-go build -o ./editors/vscode/server-bin/dev/dbml-tools .
+# in the dbml-tools Go repo
+go build .
 ```
 
 then run **DBML: Restart language server** in the dev host. There's no need
@@ -230,7 +232,7 @@ For genuine step-through debugging, set a delve breakpoint via a CLI
 attach:
 
 ```sh
-dlv exec ./editors/vscode/server-bin/dev/dbml-tools -- lsp
+dlv exec ./dbml-tools -- lsp
 ```
 
 then have the extension connect to a TCP-mode delve. This is a larger
@@ -238,10 +240,11 @@ setup — for routine work, recompile-restart is faster.
 
 ## 9. Rebuilding after Go changes
 
-After editing any Go file under `analysis/`, `lsp/`, or the parser/lexer:
+After editing any Go file under `analysis/`, `lsp/`, or the parser/lexer
+in the dbml-tools Go repo:
 
 ```sh
-go build -o ./editors/vscode/server-bin/dev/dbml-tools .
+go build .
 ```
 
 then in the dev host: **DBML: Restart language server**. No need to reload
@@ -273,7 +276,7 @@ extension will fall back to `dbml.path` / `$PATH` lookup — same as in dev.
 
 | You changed…           | Run this                              | Then this                                       |
 | ---------------------- | ------------------------------------- | ----------------------------------------------- |
-| Go server code         | `go build -o .../server-bin/dev/...`  | DBML: Restart language server                   |
+| Go server code         | `go build .` (in dbml-tools repo)     | DBML: Restart language server                   |
 | Grammar JSON           | (none — VSCode hot-reloads grammars)  | Reload Window (occasionally)                    |
 | `src/extension.ts`     | `npm run build` (or watch)            | Developer: Reload Window                        |
 | Tests (Go)             | `go test ./...`                       |                                                 |

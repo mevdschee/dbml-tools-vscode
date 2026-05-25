@@ -3,7 +3,6 @@
 out/
 dist/
 .vscode-test/
-server-bin/dev/
 
 # Node.js
 node_modules/

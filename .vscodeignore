@@ -11,5 +11,4 @@ esbuild.config.js
 **/.DS_Store
 DEBUG.md
 CROSS_COMPILE.md
-server-bin/dev/**
 vsix/**
