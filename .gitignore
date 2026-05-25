@@ -1,0 +1,65 @@
+# VS Code Extension specific
+*.vsix
+out/
+dist/
+.vscode-test/
+server-bin/dev/
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.npm
+.yarn-integrity
+
+# TypeScript
+*.tsbuildinfo
+*.js.map
+
+# Build outputs
+*.js
+!esbuild.config.js
+!language-configuration.json
+
+# Testing
+coverage/
+.nyc_output/
+
+# Logs
+logs/
+*.log
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# OS specific
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+*~
+
+# IDE
+.idea/
+*.swp
+*.swo
+*.swn
+.vscode/
+!.vscode/launch.json
+!.vscode/tasks.json
+!.vscode/extensions.json
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# Debug files
+CLAUDE.md

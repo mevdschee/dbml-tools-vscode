@@ -1,0 +1,25 @@
+// SYNTAX TEST "source.dbml" "Top-level declaration keywords"
+
+Table users {
+// <-- keyword.control.declaration.dbml
+  id int
+}
+
+Enum status {
+// <-- keyword.control.declaration.dbml
+  pending
+}
+
+Ref my_fk: a.b > c.d
+// <-- keyword.control.declaration.dbml
+//  ^^^^^ entity.name.ref.dbml
+
+Project p {
+// <-- keyword.control.declaration.dbml
+  database_type: 'PostgreSQL'
+}
+
+TableGroup commerce {
+// <-- keyword.control.declaration.dbml
+  users
+}

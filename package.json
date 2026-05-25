@@ -1,0 +1,73 @@
+{
+  "name": "dbml-tools",
+  "displayName": "DBML Tools",
+  "description": "DBML language support: syntax highlighting, diagnostics, completions, hover, go-to-definition, rename.",
+  "version": "0.1.0",
+  "publisher": "tqdev",
+  "license": "MIT",
+  "categories": ["Programming Languages", "Linters", "Snippets"],
+  "keywords": ["dbml", "database", "schema", "sql"],
+  "engines": { "vscode": "^1.85.0" },
+  "main": "./dist/extension.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "dbml",
+        "aliases": ["DBML"],
+        "extensions": [".dbml"],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "dbml",
+        "scopeName": "source.dbml",
+        "path": "./syntaxes/dbml.tmLanguage.json"
+      }
+    ],
+    "snippets": [
+      { "language": "dbml", "path": "./snippets/dbml.code-snippets" }
+    ],
+    "configuration": {
+      "title": "DBML Tools",
+      "properties": {
+        "dbml.path": {
+          "type": "string",
+          "default": "",
+          "description": "Path to the dbml-tools binary. Empty = use the binary on $PATH."
+        },
+        "dbml.trace.server": {
+          "type": "string",
+          "enum": ["off", "messages", "verbose"],
+          "default": "off",
+          "description": "LSP protocol tracing (writes to the output channel)."
+        },
+        "dbml.log.path": {
+          "type": "string",
+          "default": "",
+          "description": "If set, the server writes detailed logs to this path. Useful for debugging."
+        }
+      }
+    },
+    "commands": [
+      { "command": "dbml.restart", "title": "DBML: Restart language server" }
+    ]
+  },
+  "scripts": {
+    "build": "node esbuild.config.js",
+    "watch": "node esbuild.config.js --watch",
+    "test:grammar": "vscode-tmgrammar-test 'test/grammar/*.dbml'",
+    "test:snap": "vscode-tmgrammar-snap 'test/grammar/*.dbml'",
+    "vscode:prepublish": "npm run build"
+  },
+  "dependencies": {
+    "vscode-languageclient": "^9.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.85.0",
+    "esbuild": "^0.20.0",
+    "typescript": "^5.3.0",
+    "vscode-tmgrammar-test": "^0.1.3"
+  }
+}

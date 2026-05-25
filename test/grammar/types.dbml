@@ -1,0 +1,20 @@
+// SYNTAX TEST "source.dbml" "Builtin column types"
+
+Table t {
+  a int
+//  ^^^ support.type.builtin.dbml
+  b varchar
+//  ^^^^^^^ support.type.builtin.dbml
+  c bigint
+//  ^^^^^^ support.type.builtin.dbml
+  d text
+//  ^^^^ support.type.builtin.dbml
+  e timestamp
+//  ^^^^^^^^^ support.type.builtin.dbml
+  f boolean
+//  ^^^^^^^ support.type.builtin.dbml
+  g jsonb
+//  ^^^^^ support.type.builtin.dbml
+  h uuid
+//  ^^^^ support.type.builtin.dbml
+}

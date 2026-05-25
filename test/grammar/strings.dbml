@@ -1,0 +1,18 @@
+// SYNTAX TEST "source.dbml" "Strings and func expressions"
+
+Table t {
+  id int [note: 'hello', default: `now()`]
+//              ^^^^^^^ string.quoted.single.dbml
+//                                ^^^^^^^ string.interpolated.dbml
+  c int [default: 0]
+}
+
+Project p {
+  Note: '''multi'''
+//      ^^^^^^^^^^^ string.quoted.triple.dbml
+}
+
+Table "weird name" {
+//    ^^^^^^^^^^^^ string.quoted.double.dbml
+  id int
+}

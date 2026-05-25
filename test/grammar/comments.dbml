@@ -1,0 +1,12 @@
+// SYNTAX TEST "source.dbml" "Comments"
+
+// a line comment here
+// <-- comment.line.double-slash.dbml
+
+Table t {
+  id int // trailing comment
+//       ^^^^^^^^^^^^^^^^^^^ comment.line.double-slash.dbml
+}
+
+/* block comment */
+// <-- comment.block.dbml

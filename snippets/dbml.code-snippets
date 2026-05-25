@@ -1,0 +1,36 @@
+{
+  "Table declaration": {
+    "prefix": "table",
+    "body": ["Table ${1:name} {", "\t$0", "}"]
+  },
+  "Table with FK": {
+    "prefix": "tablefk",
+    "body": [
+      "Table ${1:name} {",
+      "\tid int [pk, increment]",
+      "\t${2:other_id} int [ref: > ${3:other_table}.${4:id}]",
+      "\t$0",
+      "}"
+    ]
+  },
+  "Ref declaration": {
+    "prefix": "ref",
+    "body": "Ref: ${1:t1}.${2:c1} > ${3:t2}.${4:c2}"
+  },
+  "Enum declaration": {
+    "prefix": "enum",
+    "body": ["Enum ${1:name} {", "\t$0", "}"]
+  },
+  "Project declaration": {
+    "prefix": "proj",
+    "body": [
+      "Project ${1:name} {",
+      "\tdatabase_type: '${2|MariaDB,PostgreSQL,SQLite|}'",
+      "}"
+    ]
+  },
+  "TableGroup declaration": {
+    "prefix": "tg",
+    "body": ["TableGroup ${1:name} {", "\t$0", "}"]
+  }
+}

@@ -1,0 +1,21 @@
+// SYNTAX TEST "source.dbml" "Column attributes and operators"
+
+Table t {
+  id int [pk, not null, unique]
+//        ^^ variable.parameter.attribute.dbml
+//            ^^^^^^^^ variable.parameter.attribute.dbml
+//                      ^^^^^^ variable.parameter.attribute.dbml
+  user_id int [ref: > users.id]
+//             ^^^ variable.parameter.attribute.dbml
+//                  ^ keyword.operator.relationship.dbml
+}
+
+Ref: a.b > c.d
+//       ^ keyword.operator.relationship.dbml
+//    ^ punctuation.accessor.dbml
+
+Ref: a.b < c.d
+//       ^ keyword.operator.relationship.dbml
+
+Ref: a.b <> c.d
+//       ^^ keyword.operator.relationship.dbml
