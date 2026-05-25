@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 820 820"
+   role="img"
+   aria-label="DBML logo"
+   version="1.1"
+   id="svg28"
+   sodipodi:docname="dbml-tools-logo.svg"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <defs
+     id="defs32" />
+  <sodipodi:namedview
+     id="namedview30"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="1.1819195"
+     inkscape:cx="-86.723335"
+     inkscape:cy="366.77625"
+     inkscape:window-width="3440"
+     inkscape:window-height="1371"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg28" />
+  <title
+     id="title2">DBML</title>
+  <desc
+     id="desc4">Rounded-square blue app icon: a white curly-brace markup glyph { / } stacked over a two-tier database cylinder, evoking a brace-delimited markup language for databases.</desc>
+  <!-- Rounded-square background -->
+  <rect
+     x="0"
+     y="0"
+     width="820"
+     height="820"
+     rx="150"
+     ry="150"
+     fill="#0a47e0"
+     id="rect6" />
+  <!-- ============================================================
+       DATABASE STACK (two disks under the glyph)
+       Lighter top disk, slightly more saturated bottom disk
+       ============================================================ -->
+  <!-- Top disk (lighter) -->
+  <!-- Bottom disk (more saturated blue) -->
+  <!-- ============================================================
+       BRACE-MARKUP GLYPH:  { / }
+       White, bold, sitting above the disks like the </> in the ref
+       ============================================================ -->
+  <g
+     fill="#ffffff"
+     id="g26">
+    <!-- Left brace  { -->
+    <!-- Built as a thick stroke path for clean rounded geometry -->
+    <path
+       d="m 170.94102,198.7741 c -71.887236,0 -77.877838,47.92482 -77.877838,101.84024 v 47.92482 c 0,39.53798 -17.971808,56.31167 -53.915422,56.31167 35.943614,0 53.915422,16.77368 53.915422,56.31166 v 47.92482 c 0,53.91542 5.990602,101.84024 77.877838,101.84024"
+       fill="none"
+       stroke="#ffffff"
+       stroke-width="55.1135"
+       stroke-linecap="round"
+       stroke-linejoin="round"
+       id="path20" />
+    <!-- Center slash / -->
+    <!-- Right brace  } -->
+    <path
+       d="m 638.8191,196.36104 c 71.88723,0 77.87784,47.92482 77.87784,101.84024 v 47.92482 c 0,39.53798 17.9718,56.31166 53.91542,56.31166 -35.94362,0 -53.91542,16.77369 -53.91542,56.31167 v 47.92482 c 0,53.91542 -5.99061,101.84024 -77.87784,101.84024"
+       fill="none"
+       stroke="#ffffff"
+       stroke-width="55.1135"
+       stroke-linecap="round"
+       stroke-linejoin="round"
+       id="path24" />
+  </g>
+  <text
+     xml:space="preserve"
+     style="font-size:159.826px;fill:#a9c8ff;fill-opacity:1;stroke-width:1.66485"
+     x="184.64334"
+     y="387.8053"
+     id="text300"><tspan
+       sodipodi:role="line"
+       id="tspan298"
+       x="184.64334"
+       y="387.8053"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:159.826px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';fill:#a9c8ff;fill-opacity:1;stroke-width:1.66485">DBML</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-size:159.826px;fill:#2f7bff;fill-opacity:1;stroke-width:1.66485"
+     x="214.181"
+     y="547.25378"
+     id="text300-3"><tspan
+       sodipodi:role="line"
+       id="tspan298-6"
+       x="214.181"
+       y="547.25378"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:159.826px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';fill:#2f7bff;fill-opacity:1;stroke-width:1.66485">Tools</tspan></text>
+  <metadata
+     id="metadata2381">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:title>DBML</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+</svg>
