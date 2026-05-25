@@ -1,9 +1,7 @@
 #!/usr/bin/env bash
 #
-# Publish every vsix/*.vsix to the Visual Studio Marketplace and Open VSX.
-#
-# Each .vsix already encodes its platform target, so both registries merge
-# the uploads into one extension listing that "works with" every platform.
+# Publish the universal vsix/dbml-tools-<version>.vsix to the Visual Studio
+# Marketplace and Open VSX.
 #
 # Requires (set in your shell or a .env loaded before invoking):
 #   VSCE_PAT  — Visual Studio Marketplace PAT
@@ -16,7 +14,8 @@
 #   ./scripts/publish-all.sh vsce         # marketplace only
 #   ./scripts/publish-all.sh ovsx         # open-vsx only
 #
-# Prereq: vsix/*.vsix already built — run ./scripts/package-all.sh first.
+# Prereq: vsix/dbml-tools-<version>.vsix already built — run
+#   ./scripts/package-all.sh first.
 
 set -euo pipefail
 
@@ -24,10 +23,11 @@ cd "$(dirname "$0")/.."
 
 TARGET="${1:-both}"
 
-shopt -s nullglob
-VSIX_FILES=(vsix/*.vsix)
-if [ ${#VSIX_FILES[@]} -eq 0 ]; then
-  echo "No .vsix files in vsix/. Run ./scripts/package-all.sh first." >&2
+VERSION=$(node -p "require('./package.json').version")
+VSIX="vsix/dbml-tools-${VERSION}.vsix"
+
+if [ ! -f "$VSIX" ]; then
+  echo "$VSIX not found. Run ./scripts/package-all.sh first." >&2
   exit 1
 fi
 
@@ -37,12 +37,8 @@ publish_vsce() {
     return
   fi
   echo "=== Visual Studio Marketplace ==="
-  for f in "${VSIX_FILES[@]}"; do
-    echo "→ vsce publish $f"
-    if ! npx --no-install vsce publish --packagePath "$f"; then
-      echo "  vsce failed for $f — continuing with remaining targets" >&2
-    fi
-  done
+  echo "→ vsce publish $VSIX"
+  npx --no-install vsce publish --packagePath "$VSIX"
 }
 
 publish_ovsx() {
@@ -51,12 +47,8 @@ publish_ovsx() {
     return
   fi
   echo "=== Open VSX ==="
-  for f in "${VSIX_FILES[@]}"; do
-    echo "→ ovsx publish $f"
-    if ! npx --no-install ovsx publish "$f"; then
-      echo "  ovsx failed for $f — continuing with remaining targets" >&2
-    fi
-  done
+  echo "→ ovsx publish $VSIX"
+  npx --no-install ovsx publish "$VSIX"
 }
 
 case "$TARGET" in
