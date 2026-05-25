@@ -8,6 +8,8 @@ This extension is the editor frontend for
 ships an LSP server alongside its `tosql`, `todot`, `migrate`, and
 `check` subcommands.
 
+Blog: https://www.tqdev.com/2026-dbml-tools-vscode-extension-lsp/
+
 ## Features
 
 - **Syntax highlighting** for tables, enums, refs, table groups, project
