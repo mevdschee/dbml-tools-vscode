@@ -3,8 +3,13 @@
 out/**
 src/**
 test/**
+scripts/**
 node_modules/**
 tsconfig.json
 esbuild.config.js
 **/*.map
 **/.DS_Store
+DEBUG.md
+CROSS_COMPILE.md
+server-bin/dev/**
+vsix/**

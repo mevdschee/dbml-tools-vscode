@@ -63,3 +63,6 @@ Thumbs.db
 
 # Debug files
 CLAUDE.md
+
+# Executable files
+server-bin/

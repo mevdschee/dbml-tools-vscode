@@ -5,16 +5,39 @@
   "version": "0.1.0",
   "publisher": "tqdev",
   "license": "MIT",
-  "categories": ["Programming Languages", "Linters", "Snippets"],
-  "keywords": ["dbml", "database", "schema", "sql"],
-  "engines": { "vscode": "^1.85.0" },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mevdschee/dbml-tools-vscode"
+  },
+  "bugs": {
+    "url": "https://github.com/mevdschee/dbml-tools-vscode/issues"
+  },
+  "homepage": "https://github.com/mevdschee/dbml-tools-vscode",
+  "categories": [
+    "Programming Languages",
+    "Linters",
+    "Snippets"
+  ],
+  "keywords": [
+    "dbml",
+    "database",
+    "schema",
+    "sql"
+  ],
+  "engines": {
+    "vscode": "^1.85.0"
+  },
   "main": "./dist/extension.js",
   "contributes": {
     "languages": [
       {
         "id": "dbml",
-        "aliases": ["DBML"],
-        "extensions": [".dbml"],
+        "aliases": [
+          "DBML"
+        ],
+        "extensions": [
+          ".dbml"
+        ],
         "configuration": "./language-configuration.json"
       }
     ],
@@ -26,7 +49,10 @@
       }
     ],
     "snippets": [
-      { "language": "dbml", "path": "./snippets/dbml.code-snippets" }
+      {
+        "language": "dbml",
+        "path": "./snippets/dbml.code-snippets"
+      }
     ],
     "configuration": {
       "title": "DBML Tools",
@@ -38,7 +64,11 @@
         },
         "dbml.trace.server": {
           "type": "string",
-          "enum": ["off", "messages", "verbose"],
+          "enum": [
+            "off",
+            "messages",
+            "verbose"
+          ],
           "default": "off",
           "description": "LSP protocol tracing (writes to the output channel)."
         },
@@ -50,7 +80,10 @@
       }
     },
     "commands": [
-      { "command": "dbml.restart", "title": "DBML: Restart language server" }
+      {
+        "command": "dbml.restart",
+        "title": "DBML: Restart language server"
+      }
     ]
   },
   "scripts": {
@@ -61,6 +94,7 @@
     "vscode:prepublish": "npm run build"
   },
   "dependencies": {
+    "@vscode/vsce": "^3.9.1",
     "vscode-languageclient": "^9.0.1"
   },
   "devDependencies": {
