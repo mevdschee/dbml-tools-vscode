@@ -7,20 +7,38 @@
 # out temporarily so they don't bloat the package.
 #
 # Usage:
-#   ./scripts/package-all.sh                 # all targets that have a binary
-#   ./scripts/package-all.sh linux-x64       # one target
+#   ./scripts/package-all.sh                       # all targets that have a binary
+#   ./scripts/package-all.sh linux-x64             # one target
+#   ./scripts/package-all.sh --archive             # all targets + tar.gz bundle
+#   ./scripts/package-all.sh --archive linux-x64   # one target + tar.gz bundle
 #
 # Prereq: cross-built binaries copied into server-bin/. Easiest way:
 #   (in ../dbml-tools/) make sync-vscode VSCODE_DIR=../dbml-tools-vscode
 #
 # Output: vsix/dbml-tools-<version>-<target>.vsix
+#         vsix/dbml-tools-<version>.tar.gz  (with --archive)
 
 set -euo pipefail
 
 cd "$(dirname "$0")/.."
 
 ALL_TARGETS=(linux-x64 linux-arm64 darwin-x64 darwin-arm64 win32-x64 win32-arm64)
-SELECTED=("$@")
+ARCHIVE=0
+SELECTED=()
+for arg in "$@"; do
+  case "$arg" in
+    --archive) ARCHIVE=1 ;;
+    -h|--help)
+      sed -n '2,16p' "$0" | sed 's/^# \{0,1\}//'
+      exit 0
+      ;;
+    --*)
+      echo "unknown flag: $arg" >&2
+      exit 2
+      ;;
+    *) SELECTED+=("$arg") ;;
+  esac
+done
 if [ ${#SELECTED[@]} -eq 0 ]; then
   SELECTED=("${ALL_TARGETS[@]}")
 fi
@@ -68,3 +86,18 @@ done
 echo
 echo "vsix files:"
 ls -1 vsix/*.vsix 2>/dev/null || echo "  (none produced)"
+
+if [ "$ARCHIVE" -eq 1 ]; then
+  shopt -s nullglob
+  vsix_files=(vsix/*.vsix)
+  shopt -u nullglob
+  if [ ${#vsix_files[@]} -eq 0 ]; then
+    echo "no .vsix files to archive" >&2
+    exit 1
+  fi
+  version=$(node -p "require('./package.json').version")
+  archive="vsix/dbml-tools-${version}.tar.gz"
+  tar -czf "$archive" -C vsix $(printf '%s\n' "${vsix_files[@]}" | xargs -n1 basename)
+  echo
+  echo "archive: $archive"
+fi
