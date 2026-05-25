@@ -3,7 +3,7 @@
   "displayName": "DBML Tools",
   "description": "DBML language support: syntax highlighting, diagnostics, completions, hover, go-to-definition, rename.",
   "version": "0.1.0",
-  "publisher": "tqdev",
+  "publisher": "tqdev-com",
   "license": "MIT",
   "repository": {
     "type": "git",
