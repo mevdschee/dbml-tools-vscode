@@ -27,7 +27,14 @@
     "strings": {
       "patterns": [
         { "name": "string.quoted.triple.dbml", "begin": "'''", "end": "'''" },
-        { "name": "string.quoted.single.dbml", "begin": "'", "end": "'|$" },
+        {
+          "name": "string.quoted.single.dbml",
+          "begin": "'",
+          "end": "'|$",
+          "patterns": [
+            { "name": "constant.character.escape.dbml", "match": "\\\\['\\\\]" }
+          ]
+        },
         { "name": "string.quoted.double.dbml", "begin": "\"", "end": "\"|$" }
       ]
     },
@@ -38,7 +45,7 @@
     },
     "numbers": {
       "name": "constant.numeric.dbml",
-      "match": "\\b-?[0-9]+(\\.[0-9]+)?([eE][+-]?[0-9]+)?\\b"
+      "match": "(?<![\\w.])-?[0-9]+(\\.[0-9]+)?([eE][+-]?[0-9]+)?\\b"
     },
     "colors": {
       "name": "constant.other.color.dbml",
@@ -46,7 +53,7 @@
     },
     "declaration-keywords": {
       "name": "keyword.control.declaration.dbml",
-      "match": "\\b(Table|TablePartial|Enum|Ref|Note|Project|TableGroup|indexes|records)\\b"
+      "match": "\\b(Table|TablePartial|Enum|Ref|Note|Project|TableGroup|Records|indexes|records)\\b"
     },
     "declaration-keyword-with-name": {
       "match": "\\b(Ref)\\s+([A-Za-z_][A-Za-z0-9_]*)\\b",
