@@ -1,0 +1,21 @@
+// SYNTAX TEST "source.dbml" "Records blocks"
+
+Records users(id, username, role) {
+// <-- keyword.control.declaration.dbml
+  0, 'Alice', 'admin'
+//^ constant.numeric.dbml
+//   ^^^^^^^ string.quoted.single.dbml
+  -5, 'it\'s', null
+//^^ constant.numeric.dbml
+//    ^^^^^^^ string.quoted.single.dbml
+//       ^^ constant.character.escape.dbml
+//           ^ - string.quoted.single.dbml
+}
+
+Table t {
+  id int
+  records {
+//^^^^^^^ keyword.control.declaration.dbml
+    1
+  }
+}

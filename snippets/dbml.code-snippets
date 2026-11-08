@@ -32,5 +32,9 @@
   "TableGroup declaration": {
     "prefix": "tg",
     "body": ["TableGroup ${1:name} {", "\t$0", "}"]
+  },
+  "Records declaration": {
+    "prefix": "records",
+    "body": ["Records ${1:table}(${2:columns}) {", "\t$0", "}"]
   }
 }
