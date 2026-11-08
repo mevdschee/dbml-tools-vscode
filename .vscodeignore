@@ -12,3 +12,4 @@ esbuild.config.js
 DEBUG.md
 CROSS_COMPILE.md
 vsix/**
+.claude/**
